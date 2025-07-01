@@ -26,7 +26,7 @@ const Hero = () => {
       {/* Navigation */}
       <nav className={styles.navigation}>
         <div className={styles.navLeft}>
-          <span className={styles.navName}>Jay Cole</span>
+          <span className={styles.navName}>Mo Sugar</span>
           <div className={styles.statusDot}></div>
           <span className={styles.statusText}>Available</span>
         </div>
@@ -43,13 +43,14 @@ const Hero = () => {
         {/* Main heading */}
         <div className={styles.titleSection}>
           <h1 className={styles.mainTitle}>
-            Jay Cole<span className={styles.trademark}>®</span>
+            Mo Sugar<span className={styles.trademark}>®</span>
           </h1>
         </div>
         
         {/* Three column grid: Copyright/Tagline, Brand, UI/UX */}
         <div className={styles.sectionsGrid}>
           <div className={styles.copyrightSection}>
+            <div className={styles.orangeEdge}></div>
             <div className={styles.copyright}>©2025</div>
             <div className={styles.tagline}>
               Designing digital experiences that captivate, connect, and convert.
@@ -57,6 +58,7 @@ const Hero = () => {
           </div>
           
           <div className={styles.section}>
+            <div className={styles.orangeEdge}></div>
             <h2 className={styles.sectionTitle}>Brand</h2>
             <p className={styles.sectionDescription}>
               We craft bold, memorable brand identities that tell your story and leave a lasting impression.
@@ -64,6 +66,7 @@ const Hero = () => {
           </div>
           
           <div className={styles.section}>
+            <div className={styles.orangeEdge}></div>
             <h2 className={styles.sectionTitle}>UI/UX</h2>
             <p className={styles.sectionDescription}>
               Intuitive, user-focused interfaces that elevate engagement and drive seamless interactions.
