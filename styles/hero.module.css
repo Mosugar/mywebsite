@@ -24,11 +24,11 @@
   background-image: url('/img/12.jpg');
 }
 
-/* .darkOverlay {
+.darkOverlay {
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
-} */
+}
 
 /* Available Status - Bottom Right */
 .availableStatus {
@@ -56,9 +56,9 @@
   width: 10px;
   height: 10px;
   background-color: #FF5A1F;
-  border-radius: 20%;
+  border-radius: 50%;
   position: relative;
-  animation: shineGlow 1s ease-in-out infinite;
+  animation: shineGlow 2s ease-in-out infinite;
 }
 
 .statusDot::before {

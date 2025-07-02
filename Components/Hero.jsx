@@ -1,4 +1,5 @@
 import React from 'react';
+import GridDistortion from './GridDistortion';
 import { Menu } from 'lucide-react';
 import styles from '../styles/hero.module.css';
 
