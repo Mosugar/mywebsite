@@ -6,7 +6,7 @@ const Images = {
     js: '/images/icons/icon-js.svg',
     react: '/images/icons/icon-react.svg',
     next: '/images/icons/icon-next.svg',
-    // styled_components: "https://res.cloudinary.com/decjm9mmr/image/upload/q_10/icon-styled-components_zzrnqi.png",
+    styled_components: "https://res.cloudinary.com/decjm9mmr/image/upload/q_10/icon-styled-components_zzrnqi.png",
     tailwind: '/images/icons/icon-tailwind.svg',
     bootstrap: '/images/icons/icon-bootstrap.svg',
     gsap: '/images/icons/icon-gsap.svg',

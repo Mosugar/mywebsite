@@ -24,35 +24,61 @@
   background-image: url('/img/12.jpg');
 }
 
-.darkOverlay {
+/* .darkOverlay {
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
-}
+} */
 
-/* Status Badge Container */
-.statusBadge {
+/* Available Status - Bottom Right */
+.availableStatus {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #1E1E1E;
+  background-color: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(8px);
   border-radius: 9999px;
-  padding: 4px 12px;
+  padding: 8px 16px;
+  border: 1px solid rgba(75, 85, 99, 0.3);
 }
 
-/* Updated Status Dot */
+/* Status Badge Container (removed - keeping for compatibility) */
+.statusBadge {
+  display: none;
+}
+
+/* Updated Status Dot with Shine Animation */
 .statusDot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background-color: #FF5A1F;
+  border-radius: 20%;
+  position: relative;
+  animation: shineGlow 1s ease-in-out infinite;
+}
+
+.statusDot::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: radial-gradient(circle, rgba(255, 90, 31, 0.4) 0%, transparent 70%);
   border-radius: 50%;
+  animation: shinePulse 2s ease-in-out infinite;
 }
 
 /* Updated Status Text */
 .statusText {
   font-size: 14px;
   color: #FFFFFF;
-  font-weight: 400;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 /* SVG Logo Styles */
@@ -166,8 +192,8 @@
 }
 
 .titleSection {
-  margin-bottom: 8rem;
-  margin-top: 9rem;
+  margin-bottom: 6rem;
+  margin-top: 11rem;
 }
 
 /* THREE COLUMN GRID - Optimized */
@@ -180,7 +206,7 @@
   width: 100%;
   align-items: start;
   position: absolute;
-  bottom: 2vh;
+  bottom: -4vh;
   left: 50%;
   transform: translateX(-50%);
   padding: 0 2rem;
@@ -257,7 +283,7 @@
   pointer-events: none;
 }
 
-.lightingEffect1 {
+/* .lightingEffect1 {
   position: absolute;
   top: 20%;
   right: 20%;
@@ -267,9 +293,9 @@
   border-radius: 50%;
   filter: blur(60px);
   animation: float1 8s ease-in-out infinite;
-}
+} */
 
-.lightingEffect2 {
+/* .lightingEffect2 {
   position: absolute;
   bottom: 20%;
   left: 20%;
@@ -279,12 +305,27 @@
   border-radius: 50%;
   filter: blur(60px);
   animation: float2 10s ease-in-out infinite;
-}
+} */
 
 /* RESPONSIVE DESIGN - Comprehensive */
 
 /* Mobile Portrait */
 @media (max-width: 480px) {
+  .availableStatus {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 6px 12px;
+  }
+  
+  .statusDot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .statusText {
+    font-size: 12px;
+  }
+  
   .navLogo {
     height: 20px;
   }
@@ -400,7 +441,7 @@
   .sectionsGrid {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
-    bottom: 1vh;
+    bottom: -6vh;
     max-width: 85rem;
   }
   
@@ -443,7 +484,7 @@
   .sectionsGrid {
     gap: 2rem;
     max-width: 80rem;
-    bottom: 1vh;
+    bottom: -4vh;
   }
   
   .titleSection {
@@ -480,7 +521,7 @@
   
   .sectionsGrid {
     gap: 2.5rem;
-    bottom: -2vh;
+    bottom: -4vh;
   }
   
   .titleSection {
@@ -517,7 +558,7 @@
   
   .sectionsGrid {
     gap: 3rem;
-    bottom: 6vh;
+    bottom: 2vh;
   }
   
   .titleSection {
@@ -527,6 +568,30 @@
 }
 
 /* Enhanced Animations */
+@keyframes shineGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(255, 90, 31, 0.6);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 90, 31, 0.8), 0 0 30px rgba(255, 90, 31, 0.4);
+  }
+}
+
+@keyframes shinePulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5);
+  }
+}
+
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
