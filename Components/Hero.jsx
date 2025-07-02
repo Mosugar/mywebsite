@@ -4,12 +4,12 @@ import styles from '../styles/hero.module.css';
 
 const Hero = () => {
   const services = [
-    { icon: "🌐", title: "Frame Blox" },
-    { icon: "⚫", title: "Supa Blox" },
-    { icon: "💫", title: "Hype Blox" },
-    { icon: "💫", title: "Hype Blox" },
-    { icon: "🌙", title: "Ultra Blox" },
-    { icon: "🚢", title: "Ship Blox" }
+    { icon: "Q@", title: "Figma" },
+    { icon: "O", title: "Supa" },
+    { icon: "&", title: "Hype" },
+    { icon: "&", title: "Hype" },
+    { icon: "G®", title: "Ultra" },
+    { icon: "DP", title: "Ship" }
   ];
 
   return (
@@ -26,9 +26,11 @@ const Hero = () => {
       {/* Navigation */}
       <nav className={styles.navigation}>
         <div className={styles.navLeft}>
-          <span className={styles.navName}>Mo Sugar</span>
-          <div className={styles.statusDot}></div>
-          <span className={styles.statusText}>Available</span>
+          <span className={styles.navName}>Mo Sugar<span className={styles.trademark}>®</span></span>
+          <div className={styles.statusBadge}>
+            <div className={styles.statusDot}></div>
+            <span className={styles.statusText}>Available</span>
+          </div>
         </div>
         
         <button className={styles.menuButton}>

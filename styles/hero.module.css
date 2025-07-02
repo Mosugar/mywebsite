@@ -20,7 +20,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   background-image: url('/img/12.jpg');
 }
 
@@ -29,8 +29,41 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
+/* Add these new styles to your existing hero.module.css file */
 
-/* Navigation */
+/* Status Badge Container */
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1E1E1E;
+  border-radius: 9999px;
+  padding: 4px 12px;
+}
+
+/* Updated Status Dot */
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background-color: #FF5A1F;
+  border-radius: 50%;
+}
+
+/* Updated Status Text */
+.statusText {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+/* Update the trademark class for the nav */
+.navName .trademark {
+  font-size: 0.75rem;
+  vertical-align: top;
+  margin-left: 0.125rem;
+}
+
+/* Navigation - Enhanced */
 .navigation {
   position: absolute;
   top: 0;
@@ -41,6 +74,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
+  /* backdrop-filter: blur(8px); */
 }
 
 .navLeft {
@@ -51,7 +85,8 @@
 
 .navName {
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .statusDot {
@@ -60,37 +95,42 @@
   background-color: #f97316;
   border-radius: 50%;
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
 }
 
 .statusText {
   font-size: 0.875rem;
   color: #9ca3af;
+  font-weight: 400;
 }
 
 .menuButton {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: rgba(31, 41, 55, 0.5);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(75, 85, 99, 0.5);
+  padding: 0.625rem 1.25rem;
+  background-color: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 0.4);
   border-radius: 9999px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
 }
 
 .menuButton:hover {
-  background-color: rgba(55, 65, 81, 0.5);
-  border-color: rgba(249, 115, 22, 0.5);
+  background-color: rgba(55, 65, 81, 0.7);
+  border-color: rgba(249, 115, 22, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .menuButtonText {
   font-size: 0.875rem;
+  font-weight: 500;
 }
 
-/* Main Content */
+/* Main Content - Improved */
 .mainContent {
   position: relative;
   z-index: 20;
@@ -104,153 +144,196 @@
 }
 
 .titleSection {
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
+  margin-top: 2rem;
 }
 
 .mainTitle {
   font-size: 8rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 0.85;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.04em;
   margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .trademark {
-  font-size: 1.6rem;
+  font-size: 2.8rem;
   vertical-align: top;
-  margin-left: 0.25rem;
+  margin-left: 0.5rem;
+  opacity: 0.9;
 }
 
-/* THREE COLUMN GRID - All columns centered */
+/* THREE COLUMN GRID - Optimized */
 .sectionsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
   margin-bottom: 5rem;
-  max-width: 90rem;
+  max-width: 80rem;
   width: 100%;
   align-items: start;
   position: absolute;
-  bottom: 15vh;
+  bottom: 10vh;
   left: 50%;
   transform: translateX(-50%);
   padding: 0 2rem;
 }
 
-/* Copyright Section (First Column) - Now centered */
+/* Copyright Section - Refined */
 .copyrightSection {
-  text-align: center;
+  text-align: left;
   padding-top: 1rem;
   position: relative;
 }
 
 .copyright {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.875rem 0;
   line-height: 1;
   position: relative;
+  letter-spacing: -0.02em;
 }
 
 .tagline {
   color: #d1d5db;
   font-size: 0.8rem;
-  line-height: 1.4;
-  margin: 0 auto;
-  max-width: 16rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 18rem;
+  font-weight: 400;
 }
 
-/* Brand and UI/UX Sections */
+/* Brand and UI/UX Sections - Enhanced */
 .section {
-  text-align: center;
+  text-align: left;
   position: relative;
 }
 
 .sectionTitle {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.875rem 0;
   line-height: 1;
   position: relative;
+  letter-spacing: -0.02em;
 }
 
 .sectionDescription {
   color: #d1d5db;
   font-size: 0.8rem;
-  line-height: 1.4;
-  margin: 0 auto;
-  max-width: 16rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 18rem;
+  font-weight: 400;
 }
 
-/* Orange Edge Icon for all three titles */
+/* Orange Edge Icon - Precision Aligned */
 .orangeEdge {
   position: absolute;
   top: -0.3rem;
-  left: 0rem;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid #f97316;
+  left: -0.4rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 2.5px solid #f97316;
   border-right: none;
   border-bottom: none;
   background: transparent;
+  opacity: 0.9;
 }
 
-/* Service Boxes */
+/* Service Boxes - Modern Minimal Design */
 .serviceBoxes {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1.3rem;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 72rem;
-  padding: 0 2rem;
+  max-width: 78rem;
+  padding: 0 4rem;
 }
 
 .serviceGrid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .serviceBox {
-  background-color: rgba(17, 24, 39, 0.9);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(55, 65, 81, 0.5);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 1.3rem 1.25rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.serviceBox::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: all 0.2s ease;
+  border-radius: 1rem;
+}
+
+.serviceBox:hover::before {
+  opacity: 1;
 }
 
 .serviceBox:hover {
-  background-color: rgba(31, 41, 55, 0.9);
-  border-color: rgba(249, 115, 22, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .serviceContent {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .serviceIcon {
   color: white;
-  font-size: 1.125rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+  flex-shrink: 0;
 }
 
 .serviceTitle {
   color: white;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .serviceBox:hover .serviceTitle {
-  color: #fb923c;
+  color: #ffffff;
+  transform: translateX(2px);
 }
 
-/* Ambient Lighting */
+.serviceBox:hover .serviceIcon {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Ambient Lighting - Enhanced */
 .ambientLighting {
   position: absolute;
   inset: 0;
@@ -259,30 +342,95 @@
 
 .lightingEffect1 {
   position: absolute;
-  top: 25%;
-  right: 25%;
-  width: 24rem;
-  height: 24rem;
-  background: linear-gradient(to bottom right, rgba(249, 115, 22, 0.1), rgba(147, 51, 234, 0.1));
+  top: 20%;
+  right: 20%;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(147, 51, 234, 0.08) 50%, transparent 100%);
   border-radius: 50%;
-  filter: blur(48px);
+  filter: blur(60px);
+  animation: float1 8s ease-in-out infinite;
 }
 
 .lightingEffect2 {
   position: absolute;
-  bottom: 25%;
-  left: 25%;
-  width: 24rem;
-  height: 24rem;
-  background: linear-gradient(to top right, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+  bottom: 20%;
+  left: 20%;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 100%);
   border-radius: 50%;
-  filter: blur(48px);
+  filter: blur(60px);
+  animation: float2 10s ease-in-out infinite;
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN - Comprehensive */
 
-/* Mobile */
-@media (max-width: 767px) {
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .sectionsGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 4rem;
+    max-width: 100%;
+  }
+  
+  .copyright {
+    font-size: 1.1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+  
+  .tagline, .sectionDescription {
+    font-size: 0.75rem;
+    max-width: 100%;
+  }
+  
+  .serviceGrid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .serviceBox {
+    padding: 0.75rem;
+    min-height: 2.5rem;
+  }
+  
+  .serviceIcon {
+    font-size: 0.875rem;
+  }
+  
+  .serviceTitle {
+    font-size: 0.7rem;
+  }
+  
+  .mainTitle {
+    font-size: 3.5rem;
+  }
+  
+  .trademark {
+    font-size: 1.2rem;
+  }
+  
+  .titleSection {
+    margin-bottom: 6rem;
+    margin-top: 1rem;
+  }
+  
+  .navigation {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Mobile Landscape */
+@media (min-width: 481px) and (max-width: 767px) {
   .sectionsGrid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -308,38 +456,40 @@
   
   .serviceGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: 0.625rem;
   }
   
   .serviceBox {
-    padding: 0.75rem;
-  }
-  
-  .serviceContent {
-    gap: 0.5rem;
+    padding: 0.75rem 0.875rem;
+    min-height: 2.75rem;
   }
   
   .serviceIcon {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
   
   .serviceTitle {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   
   .mainTitle {
-    font-size: 5rem;
+    font-size: 4.5rem;
   }
   
   .trademark {
-    font-size: 1rem;
+    font-size: 1.6rem;
+  }
+  
+  .titleSection {
+    margin-bottom: 6rem;
+    margin-top: 1.5rem;
   }
 }
 
 /* Tablet */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .navigation {
-    padding: 2rem;
+    padding: 1.75rem 2.5rem;
   }
   
   .mainContent {
@@ -347,84 +497,123 @@
   }
   
   .mainTitle {
-    font-size: 10rem;
+    font-size: 7rem;
   }
   
   .trademark {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .copyright {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
   }
   
   .sectionTitle {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
   }
   
   .tagline, .sectionDescription {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   
   .sectionsGrid {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 3rem;
+    gap: 1.5rem;
+    bottom: 8vh;
+    max-width: 85rem;
+  }
+  
+  .titleSection {
+    margin-bottom: 7rem;
+    margin-top: 2rem;
+  }
+  
+  .serviceGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .serviceBox {
+    padding: 0.875rem 1rem;
+    min-height: 3rem;
+  }
+  
+  .serviceIcon {
+    font-size: 0.9rem;
+  }
+  
+  .serviceTitle {
+    font-size: 0.75rem;
   }
 }
 
 /* Desktop */
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .navigation {
+    padding: 2rem 3rem;
+  }
+  
   .mainContent {
     padding: 0 4rem;
   }
   
   .mainTitle {
-    font-size: 11.5rem;
+    font-size: 9rem;
   }
   
   .trademark {
-    font-size: 2.2rem;
+    font-size: 3rem;
     margin-left: 0.5rem;
   }
   
   .copyright {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
   
   .sectionTitle {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
   
   .tagline, .sectionDescription {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   
   .sectionsGrid {
-    gap: 4rem;
-    max-width: 95rem;
+    gap: 2rem;
+    max-width: 80rem;
+    bottom: 10vh;
   }
   
   .titleSection {
-    margin-bottom: 3rem;
+    margin-bottom: 8rem;
+    margin-top: 2rem;
+  }
+  
+  .serviceGrid {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
 /* Large Desktop */
-@media (min-width: 1280px) {
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .navigation {
+    padding: 2rem 4rem;
+  }
+  
   .mainTitle {
-    font-size: 13rem;
+    font-size: 10rem;
   }
   
   .trademark {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
   
   .copyright {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
   }
   
   .sectionTitle {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
   }
   
   .tagline, .sectionDescription {
@@ -432,16 +621,82 @@
   }
   
   .sectionsGrid {
-    gap: 5rem;
+    gap: 2.5rem;
+    bottom: 10vh;
+  }
+  
+  .titleSection {
+    margin-bottom: 8rem;
+    margin-top: 2rem;
   }
 }
 
-/* Animations */
+/* Extra Large Desktop */
+@media (min-width: 1536px) {
+  .navigation {
+    padding: 2.5rem 5rem;
+  }
+  
+  .mainTitle {
+    font-size: 11rem;
+  }
+  
+  .trademark {
+    font-size: 3.5rem;
+  }
+  
+  .copyright {
+    font-size: 1.7rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.7rem;
+  }
+  
+  .tagline, .sectionDescription {
+    font-size: 0.9rem;
+  }
+  
+  .sectionsGrid {
+    gap: 3rem;
+    bottom: 10vh;
+  }
+  
+  .titleSection {
+    margin-bottom: 8rem;
+    margin-top: 2rem;
+  }
+}
+
+/* Enhanced Animations */
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(240deg);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-25px, -25px) rotate(180deg);
   }
 }
