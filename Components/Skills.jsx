@@ -183,7 +183,7 @@ const Skills = () => {
   }, [isInView]);
 
   const skillsList = [
-    { Html: { icon: Images.html, name: "HTML" } },
+    // { Html: { icon: Images.html, name: "HTML" } },
     { SCSS: { icon: Images.scss, name: "SCSS" } },
     { Js: { icon: Images.js, name: "JavaScript" } },
     { React: { icon: Images.react, name: "React.js" } },
@@ -203,7 +203,7 @@ const Skills = () => {
     { laravel: { icon: Images.laravel, name: "Laravel" } },
     { mysql: { icon: Images.mysql, name: "MySQL" } },
     { api: { icon: Images.api, name: "Rest API" } },
-    { A11Y: { icon: Images.a11y, name: "A11Y" } },
+    // { A11Y: { icon: Images.a11y, name: "A11Y" } },
     { Optimization: { icon: Images.optimization, name: "PageSpeed" } },
     { git: { icon: Images.git, name: "git" } },
     { postman: { icon: Images.postman, name: "Postman" } },

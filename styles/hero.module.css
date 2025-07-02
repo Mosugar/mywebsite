@@ -55,11 +55,40 @@
   font-weight: 400;
 }
 
-/* Update the trademark class for the nav */
-.navName .trademark {
-  font-size: 0.75rem;
-  vertical-align: top;
-  margin-left: 0.125rem;
+/* SVG Logo Styles */
+.navLogoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.navLogo {
+  height: 24px;
+  width: auto;
+  filter: brightness(1);
+  transition: all 0.3s ease;
+}
+
+.navLogo:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+.mainLogoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainLogo {
+  height: 12rem;
+  width: auto;
+  filter: brightness(1) drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.mainLogo:hover {
+  filter: brightness(1.05) drop-shadow(0 6px 25px rgba(0, 0, 0, 0.4));
+  transform: scale(1.02);
 }
 
 /* Navigation - Enhanced */
@@ -80,12 +109,6 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.navName {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
 }
 
 .statusDot {
@@ -147,22 +170,6 @@
   margin-top: 9rem;
 }
 
-.mainTitle {
-  font-size: 8rem;
-  font-weight: 800;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  margin: 0;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.trademark {
-  font-size: 2.8rem;
-  vertical-align: top;
-  margin-left: 0.5rem;
-  opacity: 0.9;
-}
-
 /* THREE COLUMN GRID - Optimized */
 .sectionsGrid {
   display: grid;
@@ -173,7 +180,7 @@
   width: 100%;
   align-items: start;
   position: absolute;
-  bottom: 6vh;
+  bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
   padding: 0 2rem;
@@ -278,6 +285,14 @@
 
 /* Mobile Portrait */
 @media (max-width: 480px) {
+  .navLogo {
+    height: 20px;
+  }
+  
+  .mainLogo {
+    height: 6rem;
+  }
+  
   .sectionsGrid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -303,14 +318,6 @@
     max-width: 100%;
   }
   
-  .mainTitle {
-    font-size: 3.5rem;
-  }
-  
-  .trademark {
-    font-size: 1.2rem;
-  }
-  
   .titleSection {
     margin-bottom: 6rem;
     margin-top: 4rem;
@@ -323,6 +330,14 @@
 
 /* Mobile Landscape */
 @media (min-width: 481px) and (max-width: 767px) {
+  .navLogo {
+    height: 22px;
+  }
+  
+  .mainLogo {
+    height: 8rem;
+  }
+  
   .sectionsGrid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -346,14 +361,6 @@
     font-size: 0.75rem;
   }
   
-  .mainTitle {
-    font-size: 4.5rem;
-  }
-  
-  .trademark {
-    font-size: 1.6rem;
-  }
-  
   .titleSection {
     margin-bottom: 6rem;
     margin-top: 5rem;
@@ -362,20 +369,20 @@
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
+  .navLogo {
+    height: 26px;
+  }
+  
+  .mainLogo {
+    height: 10rem;
+  }
+  
   .navigation {
     padding: 1.75rem 2.5rem;
   }
   
   .mainContent {
     padding: 0 3rem;
-  }
-  
-  .mainTitle {
-    font-size: 7rem;
-  }
-  
-  .trademark {
-    font-size: 2.2rem;
   }
   
   .copyright {
@@ -393,7 +400,7 @@
   .sectionsGrid {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
-    bottom: 4vh;
+    bottom: 1vh;
     max-width: 85rem;
   }
   
@@ -405,21 +412,20 @@
 
 /* Desktop */
 @media (min-width: 1024px) and (max-width: 1279px) {
+  .navLogo {
+    height: 28px;
+  }
+  
+  .mainLogo {
+    height: 12rem;
+  }
+  
   .navigation {
     padding: 2rem 3rem;
   }
   
   .mainContent {
     padding: 0 4rem;
-  }
-  
-  .mainTitle {
-    font-size: 9rem;
-  }
-  
-  .trademark {
-    font-size: 3rem;
-    margin-left: 0.5rem;
   }
   
   .copyright {
@@ -437,7 +443,7 @@
   .sectionsGrid {
     gap: 2rem;
     max-width: 80rem;
-    bottom: 6vh;
+    bottom: 1vh;
   }
   
   .titleSection {
@@ -448,16 +454,16 @@
 
 /* Large Desktop */
 @media (min-width: 1280px) and (max-width: 1535px) {
+  .navLogo {
+    height: 30px;
+  }
+  
+  .mainLogo {
+    height: 14rem;
+  }
+  
   .navigation {
     padding: 2rem 4rem;
-  }
-  
-  .mainTitle {
-    font-size: 10rem;
-  }
-  
-  .trademark {
-    font-size: 3.2rem;
   }
   
   .copyright {
@@ -474,7 +480,7 @@
   
   .sectionsGrid {
     gap: 2.5rem;
-    bottom: 0.2vh;
+    bottom: -2vh;
   }
   
   .titleSection {
@@ -485,16 +491,16 @@
 
 /* Extra Large Desktop */
 @media (min-width: 1536px) {
+  .navLogo {
+    height: 32px;
+  }
+  
+  .mainLogo {
+    height: 16rem;
+  }
+  
   .navigation {
     padding: 2.5rem 5rem;
-  }
-  
-  .mainTitle {
-    font-size: 11rem;
-  }
-  
-  .trademark {
-    font-size: 3.5rem;
   }
   
   .copyright {
