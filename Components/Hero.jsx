@@ -3,15 +3,6 @@ import { Menu } from 'lucide-react';
 import styles from '../styles/hero.module.css';
 
 const Hero = () => {
-  const services = [
-    { icon: "Q@", title: "Figma" },
-    { icon: "O", title: "Supa" },
-    { icon: "&", title: "Hype" },
-    { icon: "&", title: "Hype" },
-    { icon: "G®", title: "Ultra" },
-    { icon: "DP", title: "Ship" }
-  ];
-
   return (
     <div className={styles.hero}>
       {/* Base black background */}
@@ -73,20 +64,6 @@ const Hero = () => {
             <p className={styles.sectionDescription}>
               Intuitive, user-focused interfaces that elevate engagement and drive seamless interactions.
             </p>
-          </div>
-        </div>
-
-        {/* Service boxes */}
-        <div className={styles.serviceBoxes}>
-          <div className={styles.serviceGrid}>
-            {services.map((service, index) => (
-              <div key={index} className={styles.serviceBox}>
-                <div className={styles.serviceContent}>
-                  <span className={styles.serviceIcon}>{service.icon}</span>
-                  <span className={styles.serviceTitle}>{service.title}</span>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

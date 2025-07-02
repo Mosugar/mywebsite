@@ -29,7 +29,6 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
-/* Add these new styles to your existing hero.module.css file */
 
 /* Status Badge Container */
 .statusBadge {
@@ -145,7 +144,7 @@
 
 .titleSection {
   margin-bottom: 8rem;
-  margin-top: 2rem;
+  margin-top: 9rem;
 }
 
 .mainTitle {
@@ -174,7 +173,7 @@
   width: 100%;
   align-items: start;
   position: absolute;
-  bottom: 10vh;
+  bottom: 6vh;
   left: 50%;
   transform: translateX(-50%);
   padding: 0 2rem;
@@ -244,95 +243,6 @@
   opacity: 0.9;
 }
 
-/* Service Boxes - Modern Minimal Design */
-.serviceBoxes {
-  position: absolute;
-  bottom: 1.3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 78rem;
-  padding: 0 4rem;
-}
-
-.serviceGrid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0.75rem;
-}
-
-.serviceBox {
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 1.3rem 1.25rem;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  min-height: 3.5rem;
-  display: flex;
-  align-items: center;
-}
-
-.serviceBox::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
-  opacity: 0;
-  transition: all 0.2s ease;
-  border-radius: 1rem;
-}
-
-.serviceBox:hover::before {
-  opacity: 1;
-}
-
-.serviceBox:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-}
-
-.serviceContent {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-
-.serviceIcon {
-  color: white;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  opacity: 0.9;
-  flex-shrink: 0;
-}
-
-.serviceTitle {
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  letter-spacing: -0.01em;
-}
-
-.serviceBox:hover .serviceTitle {
-  color: #ffffff;
-  transform: translateX(2px);
-}
-
-.serviceBox:hover .serviceIcon {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
 /* Ambient Lighting - Enhanced */
 .ambientLighting {
   position: absolute;
@@ -393,24 +303,6 @@
     max-width: 100%;
   }
   
-  .serviceGrid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  
-  .serviceBox {
-    padding: 0.75rem;
-    min-height: 2.5rem;
-  }
-  
-  .serviceIcon {
-    font-size: 0.875rem;
-  }
-  
-  .serviceTitle {
-    font-size: 0.7rem;
-  }
-  
   .mainTitle {
     font-size: 3.5rem;
   }
@@ -421,7 +313,7 @@
   
   .titleSection {
     margin-bottom: 6rem;
-    margin-top: 1rem;
+    margin-top: 4rem;
   }
   
   .navigation {
@@ -454,24 +346,6 @@
     font-size: 0.75rem;
   }
   
-  .serviceGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.625rem;
-  }
-  
-  .serviceBox {
-    padding: 0.75rem 0.875rem;
-    min-height: 2.75rem;
-  }
-  
-  .serviceIcon {
-    font-size: 0.875rem;
-  }
-  
-  .serviceTitle {
-    font-size: 0.7rem;
-  }
-  
   .mainTitle {
     font-size: 4.5rem;
   }
@@ -482,7 +356,7 @@
   
   .titleSection {
     margin-bottom: 6rem;
-    margin-top: 1.5rem;
+    margin-top: 5rem;
   }
 }
 
@@ -519,31 +393,13 @@
   .sectionsGrid {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
-    bottom: 8vh;
+    bottom: 4vh;
     max-width: 85rem;
   }
   
   .titleSection {
     margin-bottom: 7rem;
-    margin-top: 2rem;
-  }
-  
-  .serviceGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-  
-  .serviceBox {
-    padding: 0.875rem 1rem;
-    min-height: 3rem;
-  }
-  
-  .serviceIcon {
-    font-size: 0.9rem;
-  }
-  
-  .serviceTitle {
-    font-size: 0.75rem;
+    margin-top: 5rem;
   }
 }
 
@@ -581,16 +437,12 @@
   .sectionsGrid {
     gap: 2rem;
     max-width: 80rem;
-    bottom: 10vh;
+    bottom: 6vh;
   }
   
   .titleSection {
     margin-bottom: 8rem;
-    margin-top: 2rem;
-  }
-  
-  .serviceGrid {
-    grid-template-columns: repeat(6, 1fr);
+    margin-top: 1rem;
   }
 }
 
@@ -622,12 +474,12 @@
   
   .sectionsGrid {
     gap: 2.5rem;
-    bottom: 10vh;
+    bottom: 0.2vh;
   }
   
   .titleSection {
-    margin-bottom: 8rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 12rem;
   }
 }
 
@@ -659,7 +511,7 @@
   
   .sectionsGrid {
     gap: 3rem;
-    bottom: 10vh;
+    bottom: 6vh;
   }
   
   .titleSection {
