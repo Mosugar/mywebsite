@@ -1,5 +1,5 @@
 import React from 'react';
-import GridDistortion from './GridDistortion';
+import GridDistortion from '../utils/GridDistortion';
 import { Menu } from 'lucide-react';
 import styles from '../styles/hero.module.css';
 
@@ -26,13 +26,22 @@ const Hero = () => {
   return (
     <div className={styles.hero}>
       {/* Base black background */}
-      <div className={styles.backgroundBlack}></div>
+      {/* <div className={styles.backgroundBlack}></div> */}
       
-      {/* Background image layer */}
-      <div className={styles.backgroundImage}></div>
+      {/* GridDistortion background layer */}
+      <div className={styles.backgroundDistortion}>
+        <GridDistortion
+          imageSrc="./img/12.jpg"
+          grid={15}
+          mouse={0.3}
+          strength={0.2}
+          relaxation={0.85}
+          className={styles.distortionCanvas}
+        />
+      </div>
       
       {/* Dark overlay */}
-      <div className={styles.darkOverlay}></div>
+      {/* <div className={styles.darkOverlay}></div> */}
 
       {/* Navigation */}
       <nav className={styles.navigation}>
@@ -56,7 +65,6 @@ const Hero = () => {
 
       {/* Main Hero Content */}
       <div className={styles.mainContent}>
-        
         {/* Main heading */}
         <div className={styles.titleSection}>
           <div className={styles.mainLogoContainer}>

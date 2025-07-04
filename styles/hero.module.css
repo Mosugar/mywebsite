@@ -8,6 +8,17 @@
   overflow: hidden;
 }
 
+.backgroundDistortion {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+}
+.distortionCanvas {
+  width: 100%;
+  height: 100vh;
+}
+
 .backgroundBlack {
   position: absolute;
   inset: 0;

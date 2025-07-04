@@ -1,12 +1,12 @@
 import Hero from '../components/Hero';
-import Services from '../components/Services';
+import CardSwap from '../components/CardSwap';
 import Skills from '../components/Skills';
 
 export default function Home() {
   return (
     <div>
       <Hero />
-      <Services />
+      <CardSwap />
       <Skills />
       {/* You can add other sections here like About, Projects, Contact, etc. */}
     </div>
