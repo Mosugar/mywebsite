@@ -1,24 +1,24 @@
 import React, {
-    Children,
-    cloneElement,
-    forwardRef,
-    isValidElement,
-    useEffect,
-    useMemo,
-    useRef,
-  } from "react";
-  import gsap from "gsap";
-  import "../styles/CardSwap.css";
-  
-  export const Card = forwardRef(
-    ({ customClass, ...rest }, ref) => (
-      <div
-        ref={ref}
-        {...rest}
-        className={`card ${customClass ?? ""} ${rest.className ?? ""}`.trim()}
-      />
-    )
-  );
+  Children,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
+import gsap from "gsap";
+// Remove this line: import "../styles/CardSwap.css";
+
+export const Card = forwardRef(
+  ({ customClass, ...rest }, ref) => (
+    <div
+      ref={ref}
+      {...rest}
+      className={`card ${customClass ?? ""} ${rest.className ?? ""}`.trim()}
+    />
+  )
+);
   Card.displayName = "Card";
   
   const makeSlot = (
