@@ -1,35 +1,300 @@
+/* Section Container - Prevents overflow */
+.cardswap-section {
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  padding: 80px 0;
+  position: relative;
+}
+
+/* Main container with proper layout */
+.cardswap-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  position: relative;
+}
+
+/* Left side text content */
+.cardswap-text {
+  flex: 1;
+  max-width: 500px;
+  z-index: 10;
+}
+
+.cardswap-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: white;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+}
+
+.cardswap-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Right side animation container */
+.cardswap-animation {
+  flex: 1;
+  position: relative;
+  height: 500px;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card swap container - contained properly */
 .card-swap-container {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transform: translate(5%, 20%);
-    transform-origin: bottom right;
+  position: relative !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: none !important;
+  transform-origin: center !important;
+  perspective: 900px;
+  overflow: visible;
+  width: 320px !important;
+  height: 240px !important;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000 !important;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  overflow: hidden;
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 200px !important;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.card-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Content */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.card-content p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Individual Card Themes - Force Override */
+.reliable-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.reliable-card .card-badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #e0f2fe !important;
+}
+
+.smooth-card {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+.smooth-card .card-badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #d1fae5 !important;
+}
+
+.customizable-card {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%) !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+.customizable-card .card-badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #f3e8ff !important;
+}
+
+.performance-card {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.performance-card .card-badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #fee2e2 !important;
+}
+
+.dev-card {
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%) !important;
+  border-color: rgba(249, 115, 22, 0.3) !important;
+}
+
+.dev-card .card-badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #fed7aa !important;
+}
+
+/* Hover Effects */
+.card:hover {
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .card-badge {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .cardswap-container {
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+  }
   
-    perspective: 900px;
-    overflow: visible;
+  .cardswap-title {
+    font-size: 3rem;
+  }
+  
+  .cardswap-animation {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardswap-section {
+    padding: 60px 0;
+  }
+  
+  .cardswap-container {
+    padding: 0 20px;
+    gap: 40px;
+  }
+  
+  .cardswap-title {
+    font-size: 2.5rem;
+  }
+  
+  .cardswap-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .cardswap-animation {
+    height: 350px;
+  }
+  
+  .card-swap-container {
+    width: 280px !important;
+    height: 200px !important;
   }
   
   .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 12px;
-    border: 1px solid #fff;
-    background: #000;
-  
-    transform-style: preserve-3d;
-    will-change: transform;
-    backface-visibility: hidden;
+    padding: 20px !important;
+    min-height: 160px !important;
   }
   
-  @media (max-width: 768px) {
-    .card-swap-container {
-      transform: scale(0.75) translate(25%, 25%);
-    }
+  .card-content h3 {
+    font-size: 18px;
   }
   
-  @media (max-width: 480px) {
-    .card-swap-container {
-      transform: scale(0.55) translate(25%, 25%);
-    }
+  .card-content p {
+    font-size: 13px;
   }
+}
+
+@media (max-width: 480px) {
+  .cardswap-title {
+    font-size: 2rem;
+  }
+  
+  .cardswap-subtitle {
+    font-size: 1rem;
+  }
+  
+  .cardswap-animation {
+    height: 300px;
+  }
+  
+  .card-swap-container {
+    width: 240px !important;
+    height: 180px !important;
+  }
+  
+  .card {
+    padding: 16px !important;
+    min-height: 140px !important;
+  }
+  
+  .card-content h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .card-content p {
+    font-size: 12px;
+  }
+  
+  .card-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
