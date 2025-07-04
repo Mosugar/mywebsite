@@ -1,451 +1,210 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Code, Palette, Zap, Globe, Database, Smartphone, Server, Brush, ArrowRight, Sparkles } from 'lucide-react';
+import CyberpunkTitle from './CyberpunkTitle';
 
 const Services = () => {
-  const [currentSlide, setCurrentSlide] = useState(2); // Start at first real item
-  const [isHovered, setIsHovered] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const swiperRef = useRef(null);
-  const autoplayRef = useRef(null);
   const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Clean service data matching your website theme
   const services = [
     {
-      id: 1,
-      title: "Frontend Development",
-      buttonText: "View Projects",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
-          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M2 17L12 22L22 17" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M2 12L12 17L22 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      icon: Code,
+      title: "Web Development",
+      description: "Crafting immersive digital experiences with cutting-edge technologies and pixel-perfect precision.",
+      gradient: "from-orange-500 via-red-500 to-orange-600",
+      glowColor: "rgba(255, 102, 0, 0.8)",
+      particles: "🔥"
     },
     {
-      id: 2,
-      title: "UI/UX Design",
-      buttonText: "Design Portfolio",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor"/>
-          <circle cx="9" cy="9" r="2" stroke="currentColor"/>
-          <path d="M21 15L16 10L5 21" stroke="currentColor"/>
-        </svg>
-      ),
-      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+      icon: Brush,
+      title: "Creative Design", 
+      description: "Transforming visions into breathtaking interfaces that captivate and convert with artistic mastery.",
+      gradient: "from-red-500 via-pink-500 to-red-600",
+      glowColor: "rgba(255, 69, 0, 0.8)",
+      particles: "✨"
     },
     {
-      id: 3,
-      title: "Backend Development",
-      buttonText: "Explore APIs",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor"/>
-          <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor"/>
-          <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor"/>
-        </svg>
-      ),
-      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+      icon: Database,
+      title: "Backend Architecture",
+      description: "Building fortress-like systems with bulletproof security and lightning-fast performance at scale.",
+      gradient: "from-orange-600 via-amber-500 to-orange-700",
+      glowColor: "rgba(255, 140, 0, 0.8)",
+      particles: "⚡"
     },
     {
-      id: 4,
-      title: "DevOps & Deployment",
-      buttonText: "See Infrastructure",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
-          <circle cx="12" cy="12" r="3" stroke="currentColor"/>
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor"/>
-        </svg>
-      ),
-      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
+      icon: Server,
+      title: "Cloud Infrastructure",
+      description: "Orchestrating cloud symphonies with DevOps mastery and infrastructure that never sleeps.",
+      gradient: "from-red-600 via-rose-500 to-red-700",
+      glowColor: "rgba(220, 38, 127, 0.8)",
+      particles: "🚀"
     },
     {
-      id: 5,
-      title: "Performance Optimization",
-      buttonText: "Learn More",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
-          <circle cx="12" cy="12" r="10" stroke="currentColor"/>
-          <polyline points="12,6 12,12 16,14" stroke="currentColor"/>
-        </svg>
-      ),
-      gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+      icon: Smartphone,
+      title: "Mobile Innovation",
+      description: "Pioneering next-generation mobile experiences that push the boundaries of what's possible.",
+      gradient: "from-orange-400 via-yellow-400 to-orange-500",
+      glowColor: "rgba(255, 165, 0, 0.8)",
+      particles: "📱"
+    },
+    {
+      icon: Globe,
+      title: "Digital Strategy",
+      description: "Orchestrating digital dominance with data-driven strategies that skyrocket your online presence.",
+      gradient: "from-red-400 via-pink-400 to-red-500",
+      glowColor: "rgba(255, 99, 71, 0.8)",
+      particles: "🌟"
     }
   ];
 
-  const totalSlides = services.length;
-  const cardWidth = 320; // card width + gap
-
-  // Create infinite loop by duplicating services
-  const infiniteServices = [
-    ...services.slice(-2), // Last 2 items at the beginning
-    ...services,           // Original items
-    ...services.slice(0, 2) // First 2 items at the end
-  ];
-
-  // Track the real index for pagination
-  const [realIndex, setRealIndex] = useState(0);
-
-  // Auto-play functionality
   useEffect(() => {
-    if (isHovered || isTransitioning) return;
-
-    const startAutoplay = () => {
-      autoplayRef.current = setInterval(() => {
-        nextSlide();
-      }, 4000);
-    };
-
-    startAutoplay();
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % services.length);
+    }, 5000);
 
     return () => {
-      if (autoplayRef.current) {
-        clearInterval(autoplayRef.current);
-      }
+      clearInterval(slideInterval);
     };
-  }, [isHovered, isTransitioning]);
+  }, []);
 
-  // Handle infinite loop logic
-  useEffect(() => {
-    if (isTransitioning) return;
-
-    // Check if we need to reset position for infinite loop
-    if (currentSlide >= infiniteServices.length - 2) {
-      setTimeout(() => {
-        setIsTransitioning(true);
-        setCurrentSlide(2);
-        setTimeout(() => setIsTransitioning(false), 10);
-      }, 50);
-    } else if (currentSlide <= 1) {
-      setTimeout(() => {
-        setIsTransitioning(true);
-        setCurrentSlide(infiniteServices.length - 3);
-        setTimeout(() => setIsTransitioning(false), 10);
-      }, 50);
-    }
-
-    // Update the real index for pagination dots
-    let newRealIndex = currentSlide - 2;
-    if (newRealIndex < 0) newRealIndex = totalSlides + newRealIndex;
-    if (newRealIndex >= totalSlides) newRealIndex = newRealIndex - totalSlides;
-    setRealIndex(Math.max(0, Math.min(totalSlides - 1, newRealIndex)));
-  }, [currentSlide, infiniteServices.length, isTransitioning, totalSlides]);
-
-  // Navigation functions
-  const nextSlide = () => {
-    if (isTransitioning) return;
-    setCurrentSlide(prev => prev + 1);
-  };
-
-  const prevSlide = () => {
-    if (isTransitioning) return;
-    setCurrentSlide(prev => prev - 1);
-  };
-
-  const goToSlide = (index) => {
-    if (isTransitioning) return;
-    const targetSlide = index + 2; // Add offset for infinite loop
-    setCurrentSlide(targetSlide);
-  };
-
-  // Calculate transform with smooth transition
-  const getTransform = () => {
-    const translateX = -currentSlide * cardWidth;
-    return `translateX(calc(${translateX}px + 50% - 160px))`;
+  const getCardTransform = (index) => {
+    const offset = index - currentSlide;
+    const translateX = offset * 350;
+    const scale = Math.abs(offset) === 0 ? 1.05 : 0.85;
+    const rotateY = offset * 8;
+    const translateZ = Math.abs(offset) === 0 ? 50 : -20;
+    const opacity = Math.abs(offset) > 2 ? 0 : Math.abs(offset) === 0 ? 1 : 0.4;
+    
+    return {
+      transform: `translateX(${translateX}px) translateZ(${translateZ}px) scale(${scale}) rotateY(${rotateY}deg)`,
+      opacity: opacity,
+      zIndex: Math.abs(offset) === 0 ? 20 : 10 - Math.abs(offset)
+    };
   };
 
   return (
-    <section style={{
-      minHeight: '80vh',
-      background: '#0a0a0a',
-      color: 'white',
-      padding: '80px 0',
-      position: 'relative',
-      overflow: 'hidden'
-    }} ref={sectionRef}>
-      <div style={{
-        maxWidth: '1400px',
-        margin: '0 auto',
-        padding: '0 40px',
-        position: 'relative',
-        zIndex: 2
-      }}>
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '60px'
-        }}>
-          <h2 style={{
-            fontSize: '3.5rem',
-            fontWeight: 600,
-            lineHeight: 1.1,
-            margin: 0,
-            color: 'white',
-            letterSpacing: '-0.02em',
-            background: 'linear-gradient(135deg, #ffffff 0%, #d1d5db 100%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>Our Services</h2>
-        </div>
+    <section 
+      ref={sectionRef}
+      className="min-h-screen relative overflow-hidden py-20 px-4"
+    >
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Using the reusable CyberpunkTitle component */}
+        <CyberpunkTitle 
+          title="SERVICES"
+          gradient="from-orange-400 via-red-400 to-orange-500"
+          glowColor="text-orange-500"
+          glitchColor="text-red-500"
+          leftIcon={Sparkles}
+          rightIcon={Zap}
+          leftIconColor="text-orange-400"
+          rightIconColor="text-red-400"
+        />
 
-        <div 
-          style={{
-            position: 'relative',
-            width: '100%',
-            height: '450px',
-            overflow: 'visible'
-          }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div style={{
-            width: '100%',
-            height: '100%',
-            position: 'relative'
-          }}>
-            <div 
-              ref={swiperRef}
-              style={{
-                display: 'flex',
-                gap: '20px',
-                paddingLeft: 'calc(50% - 160px)',
-                willChange: 'transform',
-                transform: getTransform(),
-                transition: isTransitioning ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
+        {/* Immersive Carousel */}
+        <div className="relative">
+          <div className="relative h-[500px] overflow-hidden" style={{ perspective: '2000px' }}>
+            {/* Left Navigation */}
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev - 1 + services.length) % services.length)}
+              className="absolute left-8 top-1/2 -translate-y-1/2 z-30 group"
             >
-              {infiniteServices.map((service, index) => (
-                <div 
-                  key={`${service.id}-${index}`}
-                  style={{
-                    width: '300px',
-                    height: '400px',
-                    borderRadius: '20px',
-                    padding: '30px',
-                    position: 'relative',
-                    flexShrink: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    cursor: 'pointer',
-                    background: service.gradient,
-                    userSelect: 'none',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    transition: 'transform 0.2s ease',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-8px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110 shadow-2xl">
+                <ArrowRight size={24} className="text-white rotate-180 group-hover:scale-125 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur-xl opacity-50 group-hover:opacity-80 transition-opacity" />
+              </div>
+            </button>
+
+            {/* Right Navigation */}
+            <button
+              onClick={() => setCurrentSlide((prev) => (prev + 1) % services.length)}
+              className="absolute right-8 top-1/2 -translate-y-1/2 z-30 group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-110 shadow-2xl">
+                <ArrowRight size={24} className="text-white group-hover:scale-125 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-orange-500 rounded-full blur-xl opacity-50 group-hover:opacity-80 transition-opacity" />
+              </div>
+            </button>
+
+            {/* Cards */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  ref={el => cardsRef.current[index] = el}
+                  className="absolute w-80 h-96 transition-all duration-1000 ease-out"
+                  style={getCardTransform(index)}
                 >
-                  {/* Simple Icon Container */}
-                  <div style={{
-                    width: '64px',
-                    height: '64px',
-                    marginBottom: '20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'rgba(255, 255, 255, 0.2)',
-                    borderRadius: '16px',
-                    backdropFilter: 'blur(10px)'
-                  }}>
-                    {service.icon}
+                  <div className="h-full bg-gradient-to-br from-white/5 to-white/1 backdrop-blur-xl border border-white/20 rounded-3xl p-8 flex flex-col justify-between group hover:border-orange-500/50 transition-all duration-500 hover:shadow-2xl relative overflow-hidden">
+                    
+                    {/* Holographic Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                    
+                    {/* Animated Background */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-3xl`} />
+                    
+                    {/* Particle Effect */}
+                    <div className="absolute top-4 right-4 text-2xl animate-bounce group-hover:animate-spin">
+                      {service.particles}
+                    </div>
+
+                    {/* Icon */}
+                    <div className="relative z-10 mb-8">
+                      <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} p-4 group-hover:scale-125 transition-transform duration-500 shadow-2xl relative`}>
+                        <service.icon className="w-full h-full text-white drop-shadow-lg" strokeWidth={1.5} />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-2xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10 flex-1">
+                      <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-red-400 transition-all duration-500">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors duration-500">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="relative z-10 mt-8">
+                      <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-2xl font-bold text-sm hover:from-orange-600 hover:to-red-600 transition-all duration-500 transform hover:scale-105 shadow-2xl group/btn relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                        <span className="flex items-center justify-center gap-3 relative z-10">
+                          Explore More
+                          <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-500" />
+                        </span>
+                      </button>
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div className="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-br from-orange-400 to-red-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl" />
+                    <div className="absolute -bottom-2 -left-2 w-8 h-8 bg-gradient-to-br from-red-400 to-orange-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl" />
                   </div>
-                  
-                  {/* Clean Content */}
-                  <div style={{
-                    flex: 1,
-                    textAlign: 'left'
-                  }}>
-                    <h3 style={{
-                      fontSize: '1.5rem',
-                      fontWeight: 700,
-                      margin: 0,
-                      color: 'white',
-                      lineHeight: 1.3,
-                      letterSpacing: '-0.01em'
-                    }}>{service.title}</h3>
-                  </div>
-                  
-                  {/* Simple Button */}
-                  <button 
-                    style={{
-                      padding: '12px 24px',
-                      background: 'rgba(255, 255, 255, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.3)',
-                      borderRadius: '50px',
-                      color: 'white',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      backdropFilter: 'blur(10px)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      alignSelf: 'flex-start'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                    onClick={() => console.log(`Clicked on ${service.title}`)}
-                  >
-                    {service.buttonText}
-                    <svg style={{
-                      width: '16px',
-                      height: '16px',
-                      strokeWidth: 2
-                    }} viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12H19" stroke="currentColor" strokeLinecap="round"/>
-                      <path d="M12 5L19 12L12 19" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Clean Navigation Arrows */}
-          <button 
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '20px',
-              transform: 'translateY(-50%)',
-              width: '50px',
-              height: '50px',
-              background: 'rgba(31, 41, 55, 0.8)',
-              border: '1px solid rgba(75, 85, 99, 0.4)',
-              borderRadius: '50%',
-              color: 'white',
-              cursor: 'pointer',
-              zIndex: 10,
-              transition: 'all 0.2s ease',
-              backdropFilter: 'blur(8px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(55, 65, 81, 0.9)';
-              e.currentTarget.style.borderColor = 'rgba(249, 115, 22, 0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(31, 41, 55, 0.8)';
-              e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.4)';
-            }}
-            onClick={prevSlide}
-            aria-label="Previous slide"
-          >
-            <svg viewBox="0 0 24 24" fill="none" style={{width: '20px', height: '20px', strokeWidth: '2'}}>
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          
-          <button 
-            style={{
-              position: 'absolute',
-              top: '50%',
-              right: '20px',
-              transform: 'translateY(-50%)',
-              width: '50px',
-              height: '50px',
-              background: 'rgba(31, 41, 55, 0.8)',
-              border: '1px solid rgba(75, 85, 99, 0.4)',
-              borderRadius: '50%',
-              color: 'white',
-              cursor: 'pointer',
-              zIndex: 10,
-              transition: 'all 0.2s ease',
-              backdropFilter: 'blur(8px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(55, 65, 81, 0.9)';
-              e.currentTarget.style.borderColor = 'rgba(249, 115, 22, 0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(31, 41, 55, 0.8)';
-              e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.4)';
-            }}
-            onClick={nextSlide}
-            aria-label="Next slide"
-          >
-            <svg viewBox="0 0 24 24" fill="none" style={{width: '20px', height: '20px', strokeWidth: '2'}}>
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+          {/* Futuristic Pagination */}
+          <div className="flex justify-center gap-4 mt-16">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`relative w-12 h-2 rounded-full transition-all duration-500 ${
+                  index === currentSlide 
+                    ? 'bg-gradient-to-r from-orange-500 to-red-500 shadow-2xl' 
+                    : 'bg-white/20 hover:bg-white/40'
+                }`}
+              >
+                {index === currentSlide && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur-sm opacity-80" />
+                )}
+              </button>
+            ))}
+          </div>
         </div>
-
-        {/* Clean Pagination */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '12px',
-          marginTop: '40px'
-        }}>
-          {services.map((_, index) => (
-            <button
-              key={index}
-              style={{
-                width: '10px',
-                height: '10px',
-                borderRadius: '50%',
-                background: index === realIndex 
-                  ? '#f97316' 
-                  : 'rgba(255, 255, 255, 0.3)',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                transform: index === realIndex ? 'scale(1.2)' : 'scale(1)'
-              }}
-              onClick={() => goToSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Simple Background Elements */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        pointerEvents: 'none',
-        zIndex: 1
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: '20%',
-          right: '10%',
-          width: '300px',
-          height: '300px',
-          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(40px)'
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          bottom: '20%',
-          left: '10%',
-          width: '400px',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(60px)'
-        }}></div>
       </div>
     </section>
   );

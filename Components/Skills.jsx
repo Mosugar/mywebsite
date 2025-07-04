@@ -1,8 +1,13 @@
 import React, { useRef, useEffect, useState, memo } from "react";
+import { Code, Zap, Sparkles, Star, Cpu } from 'lucide-react';
 import styles from "../styles/skills.module.css";
 import Images from "../public/images/index";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CyberpunkTitle from "./CyberpunkTitle"; // Import the new CyberpunkTitle component
+
+// CyberpunkTitle Component
+
 
 // Memoized Tilt component for better performance
 const TiltComponent = memo(({ children, perspective = 110, scale = 1.06, className = "" }) => {
@@ -108,7 +113,6 @@ SkillBubble.displayName = "SkillBubble";
 
 // Main Skills component
 const Skills = () => {
-  const headerRef = useRef(null);
   const skillRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
 
@@ -140,24 +144,7 @@ const Skills = () => {
     if (!isInView) return;
 
     gsap.registerPlugin(ScrollTrigger);
-    const headerEl = headerRef.current;
     const skillEl = skillRef.current;
-
-    if (headerEl) {
-      gsap.to(headerEl, {
-        y: 0,
-        x: 0,
-        duration: 0.5,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: headerEl,
-          start: "bottom 96%",
-          end: "bottom 95%",
-          toggleActions: "restart none none reverse",
-          ease: "power4.inOut",
-        },
-      });
-    }
 
     if (skillEl) {
       // Use timeline for better performance
@@ -215,18 +202,22 @@ const Skills = () => {
     { Ubuntu: { icon: Images.ubuntu, name: "Ubuntu" } },
     { VirtualBox: { icon: Images.virtualbox, name: "VirtualBox" } },
     { VagrantUp: { icon: Images.vagrantup, name: "VagrantUp" } },
-    
-
-
   ];
 
   return (
     <section className={styles.skillsSection}>
-      <div className={styles.sectionHeading} id="Skills" ref={headerRef}>
-        <div className={styles.sectionHeadingContainer}>
-          <h1>My</h1>
-          <h1>Skillset</h1>
-        </div>
+      {/* Using CyberpunkTitle instead of the old heading */}
+      <div className="px-18" id="Skills">
+        <CyberpunkTitle 
+        title="MY SKILLS"
+        gradient="from-orange-400 via-red-400 to-orange-500"
+        glowColor="text-orange-500"
+        glitchColor="text-red-500"
+        leftIcon={Sparkles}
+        rightIcon={Zap}
+        leftIconColor="text-orange-400"
+        rightIconColor="text-red-400"
+        />
       </div>
 
       <div className={styles.skillsContent} ref={skillRef}>

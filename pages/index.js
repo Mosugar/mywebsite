@@ -2,10 +2,13 @@ import Hero from '../components/Hero';
 import Skills from '../components/Skills';
 // import CardSwapComponent from '../components/CardSwap';
 import Services from '../components/Services';
+import GlobalBackground from '@/Components/Layout';
 
 export default function Home() {
   return (
     <div style={{ width: '100%', overflow: 'hidden' }}>
+      <GlobalBackground>
+
       {/* First Section - Hero */}
       <Hero />
       
@@ -19,6 +22,7 @@ export default function Home() {
       <Services />
       
       {/* You can add other sections here like About, Projects, Contact, etc. */}
+      </GlobalBackground>
     </div>
   );
 }

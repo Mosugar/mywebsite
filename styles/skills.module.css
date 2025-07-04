@@ -4,7 +4,7 @@
   width: 100%;
   padding: 0 40px 0;
   position: relative;
-  background-color: #0a0a0a;
+  /* background-color: #0a0a0a; */
   min-height: 100vh;
   padding-top: 6rem;
   padding-bottom: 6rem;
@@ -19,35 +19,151 @@
 .sectionHeading {
   padding-left: 30px;
   margin-bottom: 80px;
+  text-align: center;
+  position: relative;
+}
+
+.sectionHeadingContainer {
+  position: relative;
+  display: inline-block;
 }
 
 .sectionHeadingContainer h1 {
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1;
   letter-spacing: -0.04em;
   margin: 0;
-  background: linear-gradient(135deg, #ffffff 0%, #d1d5db 100%);
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ff6600 0%, #ff4500 50%, #ff6600 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
 }
 
+/* Cyberpunk glow effect */
+.sectionHeadingContainer h1::before {
+  content: "SKILLS";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ff6600;
+  opacity: 0.2;
+  filter: blur(4px);
+  z-index: -1;
+  white-space: nowrap;
+}
+
+/* Glitch effect layer */
+.sectionHeadingContainer h1::after {
+  content: "SKILLS";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ff4500;
+  opacity: 0.3;
+  transform: translate(-2px, -2px);
+  z-index: -1;
+  white-space: nowrap;
+}
+
+/* Holographic scan line */
+.sectionHeadingContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6600, transparent);
+  opacity: 0.8;
+  animation: scanLine 3s linear infinite;
+  z-index: 3;
+}
+
+/* Floating decorative elements */
+.sectionHeadingContainer::after {
+  content: "⚡";
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  font-size: 2rem;
+  color: #ff6600;
+  animation: float 2s ease-in-out infinite;
+  z-index: 4;
+}
+
+/* Hover effects */
+.sectionHeadingContainer:hover h1::after {
+  animation: glitch 0.3s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(200px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+/* Responsive design */
 @media (max-width: 480px) {
   .sectionHeadingContainer h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+  
+  .sectionHeadingContainer h1::before,
+  .sectionHeadingContainer h1::after {
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
   .sectionHeadingContainer h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+  
+  .sectionHeadingContainer h1::before,
+  .sectionHeadingContainer h1::after {
+    font-size: 2.5rem;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .sectionHeadingContainer h1 {
+    font-size: 3rem;
+  }
+  
+  .sectionHeadingContainer h1::before,
+  .sectionHeadingContainer h1::after {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .sectionHeadingContainer h1 {
+    font-size: 3.5rem;
+  }
+  
+  .sectionHeadingContainer h1::before,
+  .sectionHeadingContainer h1::after {
     font-size: 3.5rem;
   }
 }
@@ -66,24 +182,24 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 70px;
+  gap: 68px;
 }
 
 @media (max-width: 700px) {
   .bubblesContainer {
-    gap: 50px;
+    gap: 48px;
   }
 }
 
 @media (max-width: 500px) {
   .bubblesContainer {
-    gap: 30px;
+    gap: 29px;
   }
 }
 
 .skillBubble {
-  width: 120px;
-  height: 120px;
+  width: 105px;
+  height: 105px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -146,8 +262,8 @@
 }
 
 .skillBubble img {
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.3));
 }
@@ -193,41 +309,41 @@
 }
 
 .styledComponentsIcon {
-  width: 60px !important;
-  height: 60px !important;
+  width: 58px !important;
+  height: 58px !important;
 }
 
 @media (max-width: 700px) {
   .skillBubble {
-    width: 100px;
-    height: 100px;
+    width: 97px;
+    height: 97px;
   }
 
   .skillBubble img {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
   }
 
   .styledComponentsIcon {
-    width: 40px !important;
-    height: 40px !important;
+    width: 39px !important;
+    height: 39px !important;
   }
 }
 
 @media (max-width: 500px) {
   .skillBubble {
-    width: 70px;
-    height: 70px;
+    width: 68px;
+    height: 68px;
   }
 
   .skillBubble img {
-    width: 40px;
-    height: 40px;
+    width: 39px;
+    height: 39px;
   }
 
   .styledComponentsIcon {
-    width: 30px !important;
-    height: 30px !important;
+    width: 29px !important;
+    height: 29px !important;
   }
 }
 
