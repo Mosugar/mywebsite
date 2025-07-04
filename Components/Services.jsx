@@ -1,33 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import styles from '../styles/services.module.css';
-
-// Register GSAP plugins
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const Services = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(2); // Start at first real item
   const [isHovered, setIsHovered] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const swiperRef = useRef(null);
-  const cardsRef = useRef([]);
   const autoplayRef = useRef(null);
   const sectionRef = useRef(null);
 
-  // Enhanced service data based on your skills
+  // Clean service data matching your website theme
   const services = [
     {
       id: 1,
       title: "Frontend Development",
-      description: "Modern React applications with Next.js, TypeScript, and cutting-edge UI libraries for exceptional user experiences.",
       buttonText: "View Projects",
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className={styles.serviceIcon}>
-          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
@@ -35,13 +26,12 @@ const Services = () => {
     {
       id: 2,
       title: "UI/UX Design",
-      description: "Intuitive user interfaces with Figma, responsive design principles, and modern interaction patterns.",
       buttonText: "Design Portfolio",
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className={styles.serviceIcon}>
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
-          <circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="2"/>
-          <path d="M21 15L16 10L5 21" stroke="currentColor" strokeWidth="2"/>
+        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor"/>
+          <circle cx="9" cy="9" r="2" stroke="currentColor"/>
+          <path d="M21 15L16 10L5 21" stroke="currentColor"/>
         </svg>
       ),
       gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
@@ -49,25 +39,24 @@ const Services = () => {
     {
       id: 3,
       title: "Backend Development",
-      description: "Robust APIs with Node.js, PHP, Laravel, and database management with MySQL for scalable applications.",
       buttonText: "Explore APIs",
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className={styles.serviceIcon}>
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
-          <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" strokeWidth="2"/>
-          <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="2"/>
+        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor"/>
+          <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor"/>
+          <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor"/>
         </svg>
       ),
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
     },
     {
       id: 4,
-      title: "Animation & Motion",
-      description: "Engaging animations with GSAP, Framer Motion, and CSS for delightful user interactions.",
-      buttonText: "See Animations",
+      title: "DevOps & Deployment",
+      buttonText: "See Infrastructure",
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className={styles.serviceIcon}>
-          <polygon points="5,3 19,12 5,21" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.2"/>
+        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
+          <circle cx="12" cy="12" r="3" stroke="currentColor"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor"/>
         </svg>
       ),
       gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
@@ -75,99 +64,37 @@ const Services = () => {
     {
       id: 5,
       title: "Performance Optimization",
-      description: "Speed optimization, SEO enhancement, and accessibility improvements for superior web performance.",
       buttonText: "Learn More",
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className={styles.serviceIcon}>
-          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-          <polyline points="12,6 12,12 16,14" stroke="currentColor" strokeWidth="2"/>
+        <svg viewBox="0 0 24 24" fill="none" style={{width: '32px', height: '32px', color: 'white', strokeWidth: '2'}}>
+          <circle cx="12" cy="12" r="10" stroke="currentColor"/>
+          <polyline points="12,6 12,12 16,14" stroke="currentColor"/>
         </svg>
       ),
       gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
-    },
-    {
-      id: 6,
-      title: "Full-Stack Solutions",
-      description: "Complete web applications with modern frameworks, responsive design, and seamless user experiences.",
-      buttonText: "Get Started",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" className={styles.serviceIcon}>
-          <path d="M21 16V8A2 2 0 0 0 19 6H5A2 2 0 0 0 3 8V16A2 2 0 0 0 5 18H19A2 2 0 0 0 21 16Z" stroke="currentColor" strokeWidth="2"/>
-          <polyline points="7,10 12,15 17,10" stroke="currentColor" strokeWidth="2"/>
-        </svg>
-      ),
-      gradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)"
     }
   ];
 
   const totalSlides = services.length;
+  const cardWidth = 320; // card width + gap
 
-  // GSAP Animations
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
+  // Create infinite loop by duplicating services
+  const infiniteServices = [
+    ...services.slice(-2), // Last 2 items at the beginning
+    ...services,           // Original items
+    ...services.slice(0, 2) // First 2 items at the end
+  ];
 
-    const ctx = gsap.context(() => {
-      // Section entrance animation
-      gsap.fromTo(sectionRef.current, 
-        { opacity: 0, y: 100 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 1.2, 
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-
-      // Cards stagger animation
-      gsap.fromTo(cardsRef.current,
-        { opacity: 0, y: 80, scale: 0.8 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: swiperRef.current,
-            start: "top 70%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-
-      // Floating animation for cards
-      cardsRef.current.forEach((card, index) => {
-        if (card) {
-          gsap.to(card, {
-            y: -10,
-            duration: 2 + (index * 0.1),
-            repeat: -1,
-            yoyo: true,
-            ease: "power2.inOut",
-            delay: index * 0.2
-          });
-        }
-      });
-
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  // Track the real index for pagination
+  const [realIndex, setRealIndex] = useState(0);
 
   // Auto-play functionality
   useEffect(() => {
-    if (isHovered) return;
+    if (isHovered || isTransitioning) return;
 
     const startAutoplay = () => {
       autoplayRef.current = setInterval(() => {
-        setCurrentSlide(prev => (prev + 1) % totalSlides);
+        nextSlide();
       }, 4000);
     };
 
@@ -178,99 +105,210 @@ const Services = () => {
         clearInterval(autoplayRef.current);
       }
     };
-  }, [totalSlides, isHovered]);
+  }, [isHovered, isTransitioning]);
+
+  // Handle infinite loop logic
+  useEffect(() => {
+    if (isTransitioning) return;
+
+    // Check if we need to reset position for infinite loop
+    if (currentSlide >= infiniteServices.length - 2) {
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setCurrentSlide(2);
+        setTimeout(() => setIsTransitioning(false), 10);
+      }, 50);
+    } else if (currentSlide <= 1) {
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setCurrentSlide(infiniteServices.length - 3);
+        setTimeout(() => setIsTransitioning(false), 10);
+      }, 50);
+    }
+
+    // Update the real index for pagination dots
+    let newRealIndex = currentSlide - 2;
+    if (newRealIndex < 0) newRealIndex = totalSlides + newRealIndex;
+    if (newRealIndex >= totalSlides) newRealIndex = newRealIndex - totalSlides;
+    setRealIndex(Math.max(0, Math.min(totalSlides - 1, newRealIndex)));
+  }, [currentSlide, infiniteServices.length, isTransitioning, totalSlides]);
 
   // Navigation functions
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % totalSlides);
+    if (isTransitioning) return;
+    setCurrentSlide(prev => prev + 1);
   };
 
   const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + totalSlides) % totalSlides);
+    if (isTransitioning) return;
+    setCurrentSlide(prev => prev - 1);
   };
 
   const goToSlide = (index) => {
-    setCurrentSlide(index);
+    if (isTransitioning) return;
+    const targetSlide = index + 2; // Add offset for infinite loop
+    setCurrentSlide(targetSlide);
   };
 
   // Calculate transform with smooth transition
   const getTransform = () => {
-    const translateX = -currentSlide * (340 + 30); // card width + gap
-    return `translateX(calc(${translateX}px + 50% - 170px))`;
-  };
-
-  // Handle card hover animations
-  const handleCardHover = (index, isEntering) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
-
-    if (isEntering) {
-      gsap.to(card, {
-        scale: 1.05,
-        y: -20,
-        rotationY: 5,
-        duration: 0.4,
-        ease: "power2.out"
-      });
-    } else {
-      gsap.to(card, {
-        scale: 1,
-        y: 0,
-        rotationY: 0,
-        duration: 0.4,
-        ease: "power2.out"
-      });
-    }
+    const translateX = -currentSlide * cardWidth;
+    return `translateX(calc(${translateX}px + 50% - 160px))`;
   };
 
   return (
-    <section className={styles.services} ref={sectionRef}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Our Services</h2>
-          <p className={styles.subtitle}>Crafting digital experiences with modern technologies</p>
+    <section style={{
+      minHeight: '80vh',
+      background: '#0a0a0a',
+      color: 'white',
+      padding: '80px 0',
+      position: 'relative',
+      overflow: 'hidden'
+    }} ref={sectionRef}>
+      <div style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: '0 40px',
+        position: 'relative',
+        zIndex: 2
+      }}>
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '60px'
+        }}>
+          <h2 style={{
+            fontSize: '3.5rem',
+            fontWeight: 600,
+            lineHeight: 1.1,
+            margin: 0,
+            color: 'white',
+            letterSpacing: '-0.02em',
+            background: 'linear-gradient(135deg, #ffffff 0%, #d1d5db 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>Our Services</h2>
         </div>
 
         <div 
-          className={styles.swiperContainer}
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: '450px',
+            overflow: 'visible'
+          }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className={styles.swiperTrack}>
+          <div style={{
+            width: '100%',
+            height: '100%',
+            position: 'relative'
+          }}>
             <div 
-              className={styles.swiperWrapper}
               ref={swiperRef}
               style={{
+                display: 'flex',
+                gap: '20px',
+                paddingLeft: 'calc(50% - 160px)',
+                willChange: 'transform',
                 transform: getTransform(),
-                transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                transition: isTransitioning ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
-              {services.map((service, index) => (
+              {infiniteServices.map((service, index) => (
                 <div 
-                  key={service.id} 
-                  className={styles.serviceCard}
-                  ref={el => cardsRef.current[index] = el}
-                  style={{ background: service.gradient }}
-                  onMouseEnter={() => handleCardHover(index, true)}
-                  onMouseLeave={() => handleCardHover(index, false)}
+                  key={`${service.id}-${index}`}
+                  style={{
+                    width: '300px',
+                    height: '400px',
+                    borderRadius: '20px',
+                    padding: '30px',
+                    position: 'relative',
+                    flexShrink: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    cursor: 'pointer',
+                    background: service.gradient,
+                    userSelect: 'none',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    transition: 'transform 0.2s ease',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-8px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
                 >
-                  <div className={styles.cardIcon}>
+                  {/* Simple Icon Container */}
+                  <div style={{
+                    width: '64px',
+                    height: '64px',
+                    marginBottom: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'rgba(255, 255, 255, 0.2)',
+                    borderRadius: '16px',
+                    backdropFilter: 'blur(10px)'
+                  }}>
                     {service.icon}
                   </div>
                   
-                  <div className={styles.cardContent}>
-                    <h3 className={styles.cardTitle}>{service.title}</h3>
-                    <p className={styles.cardDescription}>{service.description}</p>
+                  {/* Clean Content */}
+                  <div style={{
+                    flex: 1,
+                    textAlign: 'left'
+                  }}>
+                    <h3 style={{
+                      fontSize: '1.5rem',
+                      fontWeight: 700,
+                      margin: 0,
+                      color: 'white',
+                      lineHeight: 1.3,
+                      letterSpacing: '-0.01em'
+                    }}>{service.title}</h3>
                   </div>
                   
+                  {/* Simple Button */}
                   <button 
-                    className={styles.cardButton}
+                    style={{
+                      padding: '12px 24px',
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
+                      borderRadius: '50px',
+                      color: 'white',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      backdropFilter: 'blur(10px)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      alignSelf: 'flex-start'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
                     onClick={() => console.log(`Clicked on ${service.title}`)}
                   >
                     {service.buttonText}
-                    <svg className={styles.buttonIcon} viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg style={{
+                      width: '16px',
+                      height: '16px',
+                      strokeWidth: 2
+                    }} viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12H19" stroke="currentColor" strokeLinecap="round"/>
+                      <path d="M12 5L19 12L12 19" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </button>
                 </div>
@@ -278,33 +316,102 @@ const Services = () => {
             </div>
           </div>
 
-          {/* Enhanced Navigation Arrows */}
+          {/* Clean Navigation Arrows */}
           <button 
-            className={`${styles.navPrev} ${styles.navButton}`}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '20px',
+              transform: 'translateY(-50%)',
+              width: '50px',
+              height: '50px',
+              background: 'rgba(31, 41, 55, 0.8)',
+              border: '1px solid rgba(75, 85, 99, 0.4)',
+              borderRadius: '50%',
+              color: 'white',
+              cursor: 'pointer',
+              zIndex: 10,
+              transition: 'all 0.2s ease',
+              backdropFilter: 'blur(8px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(55, 65, 81, 0.9)';
+              e.currentTarget.style.borderColor = 'rgba(249, 115, 22, 0.6)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(31, 41, 55, 0.8)';
+              e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.4)';
+            }}
             onClick={prevSlide}
             aria-label="Previous slide"
           >
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg viewBox="0 0 24 24" fill="none" style={{width: '20px', height: '20px', strokeWidth: '2'}}>
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
+          
           <button 
-            className={`${styles.navNext} ${styles.navButton}`}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              right: '20px',
+              transform: 'translateY(-50%)',
+              width: '50px',
+              height: '50px',
+              background: 'rgba(31, 41, 55, 0.8)',
+              border: '1px solid rgba(75, 85, 99, 0.4)',
+              borderRadius: '50%',
+              color: 'white',
+              cursor: 'pointer',
+              zIndex: 10,
+              transition: 'all 0.2s ease',
+              backdropFilter: 'blur(8px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(55, 65, 81, 0.9)';
+              e.currentTarget.style.borderColor = 'rgba(249, 115, 22, 0.6)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(31, 41, 55, 0.8)';
+              e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.4)';
+            }}
             onClick={nextSlide}
             aria-label="Next slide"
           >
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg viewBox="0 0 24 24" fill="none" style={{width: '20px', height: '20px', strokeWidth: '2'}}>
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>
 
-        {/* Enhanced Pagination */}
-        <div className={styles.pagination}>
+        {/* Clean Pagination */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '12px',
+          marginTop: '40px'
+        }}>
           {services.map((_, index) => (
             <button
               key={index}
-              className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ''}`}
+              style={{
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                background: index === realIndex 
+                  ? '#f97316' 
+                  : 'rgba(255, 255, 255, 0.3)',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                transform: index === realIndex ? 'scale(1.2)' : 'scale(1)'
+              }}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -312,11 +419,33 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Background Elements */}
-      <div className={styles.backgroundElements}>
-        <div className={styles.bgShape1}></div>
-        <div className={styles.bgShape2}></div>
-        <div className={styles.bgShape3}></div>
+      {/* Simple Background Elements */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        zIndex: 1
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '20%',
+          right: '10%',
+          width: '300px',
+          height: '300px',
+          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(40px)'
+        }}></div>
+        <div style={{
+          position: 'absolute',
+          bottom: '20%',
+          left: '10%',
+          width: '400px',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(60px)'
+        }}></div>
       </div>
     </section>
   );
