@@ -2,7 +2,9 @@ import Hero from '../components/Hero';
 import Skills from '../components/Skills';
 // import CardSwapComponent from '../components/CardSwap';
 import Services from '../components/Services';
-import GlobalBackground from '@/Components/Layout';
+import GlobalBackground from '@/components/Layout';
+import ExperienceHistory from '@/components/ExperienceHistory';
+// import Work from '@/components/Work';
 
 export default function Home() {
   return (
@@ -12,6 +14,7 @@ export default function Home() {
       {/* First Section - Hero */}
       <Hero />
       
+      
       {/* Second Section - Skills */}
       <Skills />
       
@@ -20,6 +23,9 @@ export default function Home() {
       
       {/* Fourth Section - Services */}
       <Services />
+      <ExperienceHistory/>
+      {/* <Work /> */}
+
       
       {/* You can add other sections here like About, Projects, Contact, etc. */}
       </GlobalBackground>
