@@ -35,7 +35,7 @@ const ExperienceHistory = () => {
       },
     {
       id: 2,
-      title: "Full Stack Developer",
+      title: "IT Development and Network Specialist",
       company: "Miage",
       location: "On-site",
       period: "Sep 2023 - Feb 2025",
