@@ -3,51 +3,8 @@
 .workSection {
     position: relative;
     min-height: 100vh;
-    padding: 120px 0;
+    padding: 80px 0;
     overflow: hidden;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
-  }
-  
-  .backgroundElements {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  .bgGrid {
-    position: absolute;
-    inset: 0;
-    opacity: 0.1;
-    background-image: 
-      linear-gradient(rgba(255, 102, 0, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 102, 0, 0.1) 1px, transparent 1px);
-    background-size: 80px 80px;
-    animation: gridDrift 30s linear infinite;
-  }
-  
-  .bgOrb1 {
-    position: absolute;
-    left: -20%;
-    top: -30%;
-    width: 50%;
-    height: 80%;
-    background: conic-gradient(from 45deg, #ff6b35, #e74c3c, transparent, #ff6b35);
-    filter: blur(120px);
-    opacity: 0.2;
-    animation: orbDance1 25s ease-in-out infinite;
-  }
-  
-  .bgOrb2 {
-    position: absolute;
-    right: -20%;
-    bottom: -30%;
-    width: 60%;
-    height: 70%;
-    background: conic-gradient(from 225deg, #9b59b6, #3498db, transparent, #e74c3c);
-    filter: blur(150px);
-    opacity: 0.15;
-    animation: orbDance2 20s ease-in-out infinite reverse;
   }
   
   .workContainer {
@@ -58,9 +15,27 @@
     z-index: 2;
   }
   
+  .titleContainer {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .sectionTitle {
+    font-size: 4rem;
+    font-weight: 900;
+    margin: 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ff6b35, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
   .workContent {
     width: 100%;
-    padding-top: 80px;
+    padding-top: 40px;
   }
   
   .projectsContainer {
@@ -68,22 +43,20 @@
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    border-radius: 30px;
-    min-height: 80vh;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(40px);
+    border-radius: 20px;
+    min-height: 70vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
-      0 40px 100px rgba(0, 0, 0, 0.8),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   }
   
   .projectCard {
     position: relative;
-    height: 80vh;
+    height: 70vh;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    flex: 0 0 140px;
+    transition: flex 0.2s ease;
+    flex: 0 0 120px;
     overflow: hidden;
     background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
     border-right: 1px solid rgba(255, 102, 0, 0.2);
@@ -95,37 +68,21 @@
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.1) 40%,
-      rgba(0, 0, 0, 0.4) 100%
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      rgba(0, 0, 0, 0.7) 100%
     );
-    transition: all 0.3s ease;
     z-index: 1;
     opacity: 0;
+    transition: opacity 0.2s ease;
   }
   
-  .projectCard::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 102, 0, 0.05) 0%,
-      rgba(255, 102, 0, 0.02) 50%,
-      rgba(231, 76, 60, 0.03) 100%
-    );
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 2;
-  }
-  
-  .projectCard:hover::after {
-    opacity: 1;
+  .projectCard:last-child {
+    border-right: none;
   }
   
   .projectCard.active {
     flex: 1;
-    border-radius: 0 30px 30px 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -133,47 +90,25 @@
   
   .projectCard.active::before {
     opacity: 1;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.2) 40%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-  }
-  
-  .projectCard:first-child.active {
-    border-radius: 30px 0 0 30px;
-  }
-  
-  .projectCard:last-child.active {
-    border-radius: 0 30px 30px 0;
   }
   
   .cardContent {
     display: none;
     height: 100%;
-    padding: 60px;
+    padding: 40px;
     position: relative;
     z-index: 10;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   
-  .projectCard:not(.active) .cardContent {
-    display: none;
-  }
-  
   .projectCard.active .cardContent {
     display: flex;
-    animation: contentSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .projectCard.active .projectOuterName {
     opacity: 0;
-    transform: scale(0.8);
     pointer-events: none;
-    transition: all 0.3s ease;
   }
   
   .projectCardTop {
@@ -182,25 +117,22 @@
   }
   
   .projectName h3 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 900;
     margin: 0 0 20px 0;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     line-height: 0.9;
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
   }
   
   .projectDescription {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 40px;
-    line-height: 1.6;
+    line-height: 1.5;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    max-width: 500px;
+    max-width: 450px;
   }
   
   .projectExternal {
@@ -211,33 +143,32 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 32px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
+    padding: 14px 28px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 60px;
+    border-radius: 50px;
     color: white;
     text-decoration: none;
     font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-size: 1rem;
+    transition: all 0.2s ease;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
   
   .projectExternal a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
   }
   
   .projectExternal a:hover .externalIcon {
-    transform: rotate(45deg) scale(1.1);
+    transform: rotate(45deg);
   }
   
   .externalIcon {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.2s ease;
   }
   
   .projectOuterName {
@@ -247,164 +178,38 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     color: transparent;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgba(255, 255, 255, 0.3);
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.4);
     writing-mode: vertical-rl;
     text-orientation: mixed;
     font-weight: 900;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.2s ease;
     z-index: 5;
     text-transform: uppercase;
     pointer-events: none;
   }
   
   .projectOuterName h1 {
-    font-size: 2.2rem;
-    letter-spacing: 4px;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
     margin: 0;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
   }
   
   .projectOuterName span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 900;
     -webkit-text-stroke-color: rgba(255, 102, 0, 0.8);
     writing-mode: horizontal-tb;
-    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
   }
   
   .projectCard:hover .projectOuterName {
     -webkit-text-stroke-color: transparent;
     color: rgba(255, 255, 255, 0.9);
-    text-shadow: 
-      0 0 30px rgba(255, 102, 0, 0.8),
-      0 0 60px rgba(255, 102, 0, 0.4);
-    transform: scale(1.1);
-  }
-  
-  .moreProjects {
-    width: 100%;
-    padding-top: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .exploreButton {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: linear-gradient(135deg, #ff6b35 0%, #e74c3c 50%, #ff6b35 100%);
-    background-size: 300% 300%;
-    color: white;
-    padding: 28px 56px;
-    border-radius: 70px;
-    border: none;
-    font-size: 1.3rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    box-shadow: 
-      0 30px 60px rgba(255, 107, 53, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    border: 3px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .exploreButton::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 1s ease;
-  }
-  
-  .exploreButton:hover::before {
-    left: 100%;
-  }
-  
-  .exploreButton:hover {
-    transform: translateY(-6px) scale(1.08);
-    box-shadow: 
-      0 40px 80px rgba(255, 107, 53, 0.5),
-      0 0 50px rgba(255, 107, 53, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    background-position: 100% 0;
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .exploreButton:hover .buttonIcon {
-    transform: translateX(10px) rotate(25deg) scale(1.2);
-  }
-  
-  .buttonIcon {
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  /* Animations */
-  @keyframes gridDrift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(80px, 80px); }
-  }
-  
-  @keyframes orbDance1 {
-    0%, 100% { 
-      transform: translate(0, 0) rotate(0deg) scale(1);
-      opacity: 0.2;
-    }
-    25% { 
-      transform: translate(60px, -80px) rotate(90deg) scale(1.2);
-      opacity: 0.3;
-    }
-    50% { 
-      transform: translate(120px, -40px) rotate(180deg) scale(0.8);
-      opacity: 0.15;
-    }
-    75% { 
-      transform: translate(80px, 40px) rotate(270deg) scale(1.1);
-      opacity: 0.25;
-    }
-  }
-  
-  @keyframes orbDance2 {
-    0%, 100% { 
-      transform: translate(0, 0) rotate(0deg) scale(1);
-      opacity: 0.15;
-    }
-    33% { 
-      transform: translate(-80px, -60px) rotate(120deg) scale(1.3);
-      opacity: 0.25;
-    }
-    66% { 
-      transform: translate(-40px, 80px) rotate(240deg) scale(0.9);
-      opacity: 0.1;
-    }
-  }
-  
-  @keyframes contentSlideIn {
-    0% { 
-      opacity: 0; 
-      transform: translateX(40px);
-    }
-    100% { 
-      opacity: 1; 
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes shimmerMove {
-    0% { transform: translateX(-100%) skewX(-45deg); }
-    100% { transform: translateX(200%) skewX(-45deg); }
+    text-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
   }
   
   /* Mobile Styles */
@@ -412,28 +217,26 @@
     .projectsContainer {
       flex-direction: column;
       gap: 0;
-      border-radius: 25px;
+      border-radius: 15px;
       min-height: auto;
     }
   
     .projectCard {
       width: 100%;
       flex: none;
-      height: 60vh;
+      height: 50vh;
       border-radius: 0;
-    }
-  
-    .projectCard:first-child {
-      border-radius: 25px 25px 0 0;
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 102, 0, 0.2);
     }
   
     .projectCard:last-child {
-      border-radius: 0 0 25px 25px;
+      border-bottom: none;
     }
   
     .projectCard .cardContent {
       display: flex;
-      padding: 40px;
+      padding: 30px;
     }
   
     .projectCard .projectOuterName {
@@ -441,7 +244,7 @@
     }
   
     .projectName h3 {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
   
     .projectDescription {
@@ -452,42 +255,15 @@
   
   @media (max-width: 768px) {
     .workSection {
-      padding: 80px 0;
+      padding: 60px 0;
     }
   
     .workContainer {
       padding: 0 20px;
     }
   
-    .projectCard {
-      height: 50vh;
-    }
-  
-    .cardContent {
-      padding: 30px;
-    }
-  
-    .projectName h3 {
-      font-size: 2rem;
-    }
-  
-    .projectDescription {
-      font-size: 0.9rem;
-    }
-  
-    .exploreButton {
-      padding: 24px 48px;
-      font-size: 1.1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .workSection {
-      padding: 60px 0;
-    }
-  
-    .workContainer {
-      padding: 0 15px;
+    .sectionTitle {
+      font-size: 2.5rem;
     }
   
     .projectCard {
@@ -495,7 +271,7 @@
     }
   
     .cardContent {
-      padding: 20px;
+      padding: 25px;
     }
   
     .projectName h3 {
@@ -503,13 +279,42 @@
     }
   
     .projectDescription {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .workSection {
+      padding: 40px 0;
+    }
+  
+    .workContainer {
+      padding: 0 15px;
+    }
+  
+    .sectionTitle {
+      font-size: 2rem;
+    }
+  
+    .projectCard {
+      height: 40vh;
+    }
+  
+    .cardContent {
+      padding: 20px;
+    }
+  
+    .projectName h3 {
+      font-size: 1.4rem;
+    }
+  
+    .projectDescription {
       font-size: 0.85rem;
       margin-bottom: 20px;
     }
   
-    .exploreButton {
-      padding: 20px 40px;
-      font-size: 1rem;
-      gap: 15px;
+    .projectExternal a {
+      padding: 12px 24px;
+      font-size: 0.9rem;
     }
   }
