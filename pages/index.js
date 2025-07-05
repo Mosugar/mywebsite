@@ -1,12 +1,12 @@
-import Hero from '@/components/Hero';
-import Skills from '@/components/Skills';
-import MatrixRain from '@/components/MatrixRain';
-import Footer from '@/components/Footer'; 
-import Work from '@/components/Work';// Fixed: Changed from 'Fotter' to 'Footer' and used relative path
+import Hero from '../components/Hero';
+import Skills from '../components/Skills';
+import MatrixRain from '../components/MatrixRain';
+import Footer from '../components/Footer'; 
+import Work from '../components/Work';// Fixed: Changed from 'Fotter' to 'Footer' and used relative path
 // import CardSwapComponent from '../components/CardSwap';
-import Services from '@/components/Services';
-import GlobalBackground from '@/components/Layout'; // Fixed: Changed from '@/components/Layout' to relative path
-import ExperienceHistory from '@/components/ExperienceHistory';
+import Services from '../components/Services';
+import GlobalBackground from '../components/Layout'; // Fixed: Changed from '@/components/Layout' to relative path
+import ExperienceHistory from '../components/ExperienceHistory';
 // import Work from '../components/Work';
 
 export default function Home() {
